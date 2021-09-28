@@ -43,10 +43,10 @@ Create and set Permissions for Bot [discord-permissions](https://discordapi.com/
 4. Where there APPLICATION ID click in Copy
 5. Now, back to permissions and paste the Client ID.
 6. Next, below a link was generated
-7. Next, click the link, and select the desired server and Continue [permission2](./assets/persmissio2.png)
+7. Next, click the link, and select the desired server and Continue [permission2](./assets/persmission2.png)
 8. Next, Autorize.
 9. Finally enter the discord server, and see if the bot is there [bot-off](./assets/bot-off.png)
-10. When your bot is started, must be avaliable [bot-avaliable](./assets/bot-bot-avaliable.png.png)
+10. When your bot is started, must be avaliable [bot-avaliable](./assets/bot-bot-avaliable.png)
 
 Set param DISCORD_KEY, in .env
 You can get your key in 
