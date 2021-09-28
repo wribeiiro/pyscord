@@ -58,8 +58,6 @@ Start the bot
 ```bash
 $ python mybot.py
 ```
-Example:
-![screenshot](./assets/bot-run.png)
 
 Available Commands in the discord
 | Command                     |function|
