@@ -1,7 +1,7 @@
 import discord
 import os
 from dotenv import load_dotenv
-from models import ActivityUser
+from models import ActivityUser, SocialUser
 from datetime import datetime
 
 class MyDiscordBot(discord.Client):
@@ -9,19 +9,20 @@ class MyDiscordBot(discord.Client):
         print('Logged on as {0}!'.format(self.user))
 
     async def on_message(self, message):
+        print('Message from {0.author}: {0.content}'.format(message))
 
         if "-xp" in message.channel.name:
-            print('+15 xp for user to {0.author}! '.format(message))
-            
-            userActivity = ActivityUser(
-                user_id=1, 
-                created_at=str(datetime.now().strftime("%Y-%m-%d %H:%M:%S")), 
-                updated_at=str(datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
-            )
+            user = SocialUser.query.filter_by(nickname='{0.author}'.format(message)).first()
 
-            userActivity.save()
-            
-        print('Message from {0.author}: {0.content}'.format(message))
+            if user is not None:
+                user_activity = ActivityUser(
+                    user_id=user.user_id, 
+                    created_at=str(datetime.now().strftime("%Y-%m-%d %H:%M:%S")), 
+                    updated_at=str(datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+                )
+
+                user_activity.save()
+                print('+15 xp for user to {0.author}! '.format(message))
 
         if message.content == '?regras':
             await message.channel.send(f'{message.author.name} as regras do servidor são: {os.linesep} 1 - Não desrespeitar os membros; {os.linesep} 2 - Serão permitidos apenas assuntos relacionados a desenvolvimento;')
